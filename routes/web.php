@@ -23,6 +23,6 @@ Route::get('/login',[LoginController::class,'halamanlogin'])->name('login');
 Route::post('/postlogin',[LoginController::class,'postlogin'])->name('postlogin');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
-Route::group(['middleware' => ['auth','ceklevel:admin,siswa']], function (){
+Route::group(['middleware' => ['auth','ceklevel:admin,manager,kasir']], function (){
     Route::get('/home',[HomeController::class,'index'])->name('home');
 });
