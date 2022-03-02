@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin</title>
+  <title>Cafe Bisa Ngopi</title>
 
   <!-- Custom fonts for this template-->
   <link href="assets/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -30,7 +30,7 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-text mx-3">Admin</div>
+        <div class="sidebar-brand-text mx-3">Cafe Bisa Ngopi</div>
       </a>
 
       <!-- Divider -->
@@ -58,14 +58,19 @@
           <span>Data Dasar</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            @if (auth()->user()->level == "siswa")
-            <a class="collapse-item" href="{{ url('books') }}">Absen</a>
+          <div class="bg-white py-2 collapse-inner rounded">  
+            @if (auth()->user()->level == "kasir")                   
+            <a class="collapse-item" href="{{ url('rayons') }}">Transaksi</a>
             @endif
-            <a class="collapse-item" href="{{ url('rayons') }}">Rayon</a>
-            <a class="collapse-item" href="{{ url('studentGroups') }}">Rombel</a>
-            <a class="collapse-item" href="/register">Registrasi Admin</a>
-            <a class="collapse-item" href="/register.student">Registrasi Siswa</a>
+
+            @if (auth()->user()->level == "manager")
+            <a class="collapse-item" href="{{ url('studentGroups') }}">Menu</a>
+            <a class="collapse-item" href="#">Laporan</a>
+            @endif
+
+            @if (auth()->user()->level == "admin") 
+            <a class="collapse-item" href="/admin">User</a>
+            @endif
             <!-- <a class="collapse-item" href="{{ url('studentGroups') }}">Data Rombel</a> -->
 
           </div>
@@ -130,7 +135,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Website Absensi</span>
+            <span>Copyright &copy; 2022</span>
           </div>
         </div>
       </footer>

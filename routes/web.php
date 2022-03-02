@@ -15,10 +15,14 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('login.index');
 });
 
+Route::get('/admin',[LoginController::class,'admin'])->name('admin');
+
+Route::get('/register',[LoginController::class,'register'])->name('register');
+Route::post('/simpanregister',[LoginController::class,'simpanregister'])->name('simpanregister');
 Route::get('/login',[LoginController::class,'halamanlogin'])->name('login');
 Route::post('/postlogin',[LoginController::class,'postlogin'])->name('postlogin');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
